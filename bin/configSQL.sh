@@ -4,6 +4,11 @@
 #  données utilisées pour la création et la restauration de backup SQL
 #
 
+echo "ce fichier confSQL.sh est obsolet,"
+echo "il est premplacé par des conf distinctes."
+exit
+
+
 # accès au serveur SQL
 DB_HOST=localhost
 DB_USER=prestashop_admin

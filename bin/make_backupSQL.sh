@@ -4,6 +4,10 @@
 #  * puis on suprimmera les backups obsolets de plus de 14 jours.
 #
 
+echo "make_backupSQL.sh must have a rewrite before launch, sorry."
+exit
+
+
 # load usefull common stuff
 source ./utils.sh
 # Chargement du fichier de config communes
