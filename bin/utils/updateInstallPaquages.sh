@@ -28,12 +28,6 @@ ufw allow in "SSH"
 displayMsg "  Allow \e[92mWWW Full\e[0m ports 80,443"
 ufw allow in "WWW Full"
 
-# install mariaDB
-displayMsg "Install \e[92mMariaDB\e[0m"
-apt install -y mariadb-server
-# secure install
-mysql_secure_installation
-
 # install PHP
 displayMsg "Install \e[92mPHP\e[0m"
 apt install -y php libapache2-mod-php php-mysql
@@ -45,6 +39,12 @@ apt install -y python-certbot-apache
 # install de git
 displayMsg "Install \e[92mgit\e[0m"
 apt install -y git
+
+# install mariaDB
+displayMsg "Install \e[92mMariaDB\e[0m"
+apt install -y mariadb-server
+# secure install
+mysql_secure_installation
 
 echo ""
 echo "Operatin system up to date."
