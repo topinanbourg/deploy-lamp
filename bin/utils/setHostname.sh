@@ -14,7 +14,7 @@ newHostName=""
 echo ""
 echo ""
 echo "Correct host name"
-displayMsg -e "Fill new name, or leave blank to use \e[92m"$defaultHostName"\e[0m"
+displayMsg "Fill new name, or leave blank to use \e[92m"$defaultHostName"\e[0m"
 echo -n
 read userinput
 if [ "$userinput" == "" ]; then
@@ -22,7 +22,7 @@ if [ "$userinput" == "" ]; then
 else
 	newHostName=$userinput
 	echo ""
-	displayMsg -e "Use \e[92m"$newHostName"\e[0m as new host name ?"
+	displayMsg "Use \e[92m"$newHostName"\e[0m as new host name ?"
 	echo "(y)es / (n)o"
 	echo -n
 	read userinput
