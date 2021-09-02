@@ -9,9 +9,6 @@
 # chmod +x /home/centos/install.sh
 # /home/centos/install.sh
  
-# ############
-# Some const
-# 
 # Enable color display
 displayWithColor=true
 
