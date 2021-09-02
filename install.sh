@@ -55,8 +55,7 @@ source ./bin/utils/updateInstallPaquages.sh
 # add config for git and repos
 source ./bin/utils/initGitConfig.sh
 
-# git clone REPO_NAME
-source ./bin/utils/gitClone.sh
+# git clone repoName
 
 # ask for DB credentials
 source ./bin/utils/askCredentials.sh

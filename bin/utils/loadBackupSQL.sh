@@ -16,6 +16,6 @@ if [ -n "$backupSqlReady" ]; then
     displayMsg "Backup SQL \e[93m$backupSqlReady\e[0m to load.."
 
     # ~/bin/restore_backupSQL.sh nh c
-    ~/bin/restore_backupSQL.sh $REPO_NAME nh c
-    # ~/bin/restore_backupSQL.sh $REPO_NAME $backupSqlReady nh c
+    ~/bin/restore_backupSQL.sh $repoName nh c
+    # ~/bin/restore_backupSQL.sh $repoName $backupSqlReady nh c
 fi
