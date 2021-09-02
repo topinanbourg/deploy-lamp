@@ -6,10 +6,10 @@ if [ -z ${commonsLoaded+x} ]; then
 fi
 
 # check required vars
-checkVars "REPO_NAME" "DB_HOST" "DB_USER" "DB_PASS" "DB_NAME"
+checkVars "repoName" "DB_HOST" "DB_USER" "DB_PASS" "DB_NAME"
 
 
-folderForBackupsSQL="/var/www/backups/"$REPO_NAME
+folderForBackupsSQL="/var/www/backups/"$repoName
 
 # construction de l'arbo pour les backups
 mkdir -p $folderForBackupsSQL
