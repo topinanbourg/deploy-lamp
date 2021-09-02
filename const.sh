@@ -21,6 +21,11 @@ defaultHostName="s3.kalak.xyz"
 # Git repo name, and subfolder name (to deploy, backups..)
 REPO_NAME=deploy
 
+# doit on ajouter des clefs ssh
+declare -a sshKeysToAdd=(
+	"ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAAAgQCU38/eDLfHkQAYZKbQynOi+w1epcacid+jfy5oCTHPVPk51Kig3KDzF+gfOcXjzBZI15kyg/vBYSeHdKZHPqnyoiK17d/n4NaSlMXULR75lufGuQTgospJpcxtd4oI58n2i0hHtrueNaO/Xk97cngm+VQPmpjHx/3K3Gny0WAXUQ== JosNo2@TopMove"
+)
+
 # BDD cnx (will be overided to set "DB_HOST", ...)
 default_DB_HOST="localhost"
 default_DB_USER="prestashop_admin"

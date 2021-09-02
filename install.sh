@@ -40,6 +40,9 @@ source ~/.profile
 # Creation & affichage de la clef ssh (à ajouter dans Bitbucket)
 source ./bin/utils/createSshKey.sh
 
+# ajout des clefs ssh pour se connecter au serveur
+source ./bin/utils/addSSHKeys.sh
+
 # Désactivation de la connexion SSH par mot de passe
 source ./bin/utils/secureSSH.sh
 
