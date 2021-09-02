@@ -12,7 +12,7 @@ if [ ! -d "/var/www/$repoName" ]; then
 
     displayMsg "Git clone of repo \e[93m$repoName\e[0m.."
 
-    sudo -u www-data git clone "git@bitbucket.org:JosNo/"$repoName".git /var/www/"$repoName
+    eval "sudo -u www-data git clone git@bitbucket.org:JosNo/"$repoName".git /var/www/"$repoName
 
     displayMsg "Repository \e[92m$repoName\e[0m cloned."
 else 
