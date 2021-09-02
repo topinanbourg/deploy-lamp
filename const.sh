@@ -31,4 +31,4 @@ default_DB_PASS="unknow"
 default_DB_NAME="prestashop_db"
 
 # where to find some backup sql to restore
-folderToFetchBackUpSQL="/home/centos/backupSQL"
+folderToFetchBackUpSQL="/home/debian/backupSQL"
