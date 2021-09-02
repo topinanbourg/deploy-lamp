@@ -10,9 +10,9 @@
 echo ""
 echo "Please review constants before processing"
 read -p "Press [Enter] when ready..."
-nano ./const.sh
+nano /home/debian/const.sh
 # Some const
-source ./const.sh
+source /home/debian/const.sh
 # ############
 # let's go
 
