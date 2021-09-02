@@ -19,7 +19,7 @@ displayWithColor=true
 defaultHostName="s3.kalak.xyz"
 
 # Git repo name, and subfolder name (to deploy, backups..)
-REPO_NAME=curiositasv7
+REPO_NAME=deploy
 
 # BDD cnx (will be overided to set "DB_HOST", ...)
 default_DB_HOST="localhost"
