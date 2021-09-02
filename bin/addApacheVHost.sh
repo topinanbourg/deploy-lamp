@@ -22,7 +22,6 @@ AVH_PublicFolder=""
 # demande des informations du vhost
 while [ true ]; do
 
-    clear
     echo ""
     echo ""
     echo "Please fill VirtualHost informations"

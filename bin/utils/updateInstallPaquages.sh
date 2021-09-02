@@ -4,7 +4,6 @@ echo ""
 echo ""
 echo "Now, we will update system, this can take a long time,"
 read -p "so, take a cofee, and press [Enter] when ready..."
-clear
 
 # reccup de la maj des paquets
 displayMsg "\e[93mapt update\e[0m"

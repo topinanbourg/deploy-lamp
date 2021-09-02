@@ -12,8 +12,6 @@ checkVars "default_DB_HOST" "default_DB_USER" "default_DB_PASS" "default_DB_NAME
 # demande des credentials
 while [ true ]; do
 
-    clear
-
     DB_HOST=""
     DB_USER=""
     DB_PASS=""

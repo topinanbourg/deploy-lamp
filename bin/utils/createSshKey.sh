@@ -11,4 +11,3 @@ echo ""
 cat /root/.ssh/id_rsa.pub
 echo ""
 read -p "Press [Enter] when ready..."
-clear
