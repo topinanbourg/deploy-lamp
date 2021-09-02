@@ -1,8 +1,8 @@
 #!/bin/bash
 
 if [ -z ${commonsLoaded+x} ]; then
-	echo "These script must be run into a launcher."
-	exit
+    echo "These script must be run into a launcher."
+    exit
 fi
 
 # check required vars
@@ -35,7 +35,7 @@ fieldnames=("DB_HOST" "DB_USER" "DB_PASS" "DB_NAME")
 # fill values
 for field in ${fieldnames[@]}
 do
-	currentValue=${!field}
+    currentValue=${!field}
     echo $field"="$currentValue>>$confFile;
 done
 
