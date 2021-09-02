@@ -60,6 +60,8 @@ source ./bin/utils/gitClone.sh
 
 # ask for DB credentials
 source ./bin/utils/askCredentials.sh
+# ask if we need create DB user/database
+source ./bin/utils/creatSQLUser.sh
 # Create conf for DB backups
 source ./bin/utils/setSQLConf.sh
 
