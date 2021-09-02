@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 #
 #  * Remise en place d'une sauvegarde SQL,
 #
@@ -7,17 +7,8 @@
 needHeaders=false
 # load usefull common stuff
 if [ -z ${commonsLoaded+x} ]; then
-	source /root/bin/utils/commons.sh
-
-	# we know this file is self-launched
-	needHeaders=true
+    source /root/bin/utils/commons.sh
 fi
-
-
-
-
-
-
 
 folderForBackupsSQL="/var/www/backups"
 
@@ -40,30 +31,30 @@ listOnly=false
 for ARGUMENT in "$@"
 do
     if [ $ARGUMENT == "-y" ]; then
-    	noInterractive=true
-    	continue
+        noInterractive=true
+        continue
     fi
 
     if [ $ARGUMENT == "-l" ]; then
-    	listOnly=true
-    	continue
+        listOnly=true
+        continue
     fi
 
     if [[ $ARGUMENT == "nh" || $ARGUMENT == "noHeaders" ]]; then
-    	needHeaders=false
-    	continue
+        needHeaders=false
+        continue
     fi
     if [[ $ARGUMENT == "c" || $ARGUMENT == "color" ]]; then
-    	displayWithColor=true
-    	continue
+        displayWithColor=true
+        continue
     fi
 
-	if echo $ARGUMENT | egrep -iq "*\.(sql)"; then
-	    backupToLoad=$ARGUMENT
-	else
-		folderToUse=$ARGUMENT
-		folderSetByArg=true
-	fi
+    if echo $ARGUMENT | egrep -iq "*\.(sql)"; then
+        backupToLoad=$ARGUMENT
+    else
+        folderToUse=$ARGUMENT
+        folderSetByArg=true
+    fi
 done
 
 
@@ -74,19 +65,6 @@ START_TIME=$(date +"%T")
 TS_START_DATE=$(date +%s)
 
 SCRIPTNAME=$(basename $0)
-
-
-if [[ "$needHeaders" == true ]]; then
-	clear
-
-	printf "\n"
-	printf "Scriptname : "$SCRIPTNAME"\n"
-	printf "Start      : "$START_DATE" "$START_TIME"\n"
-	printf "\n"
-fi
-# #############################################
-
-
 
 : listFoldersAvailables:
 # Recherche de la liste des dossiers dispo
@@ -117,8 +95,8 @@ for folder in "${foldersList[@]}"; do
     # la date du fichier extraite de son nom
     # /var/www/backups/cdc7
     # =>               cdc7
-	# filename=$(rev <<< "$backup" | cut -f1 -d'/' | rev)
-	filename=$(basename $folder)
+    # filename=$(rev <<< "$backup" | cut -f1 -d'/' | rev)
+    filename=$(basename $folder)
 
     if [ "$folderToUse" != "" ]; then
         # pour le cas où l'on connait le fichier à charger
@@ -133,10 +111,10 @@ for folder in "${foldersList[@]}"; do
         fi
         displayMsg "Folder : \e[93m$folder\e[0m"
     else
-		if [[ "$listOnly" == true ]]; then
-        	displayMsg "  "$filename
+        if [[ "$listOnly" == true ]]; then
+            displayMsg "  "$filename
         else
-        	displayMsg "\e[92m "$foldersIndex"\e[0m : "$filename
+            displayMsg "\e[92m "$foldersIndex"\e[0m : "$filename
         fi
     fi
 
@@ -144,53 +122,53 @@ done
 
 # on ne souhaitait que la liste
 if [[ "$listOnly" == true ]]; then
-	jumpto "end"
+    jumpto "end"
 fi
 
 # pour le cas où l'on pensais savoir quel fichier charger, mais qu'il n'a pas été trouvé
 if [ "$folderToUse" != "" ] && [ $folderFound == false ]; then
     displayMsg "Folder \e[93m$folderToUse\e[0m \e[91mNot found\e[0m, abort."
-	jumpto "end"
+    jumpto "end"
 else
-	if [ "$folderToUse" == "" ]; then
+    if [ "$folderToUse" == "" ]; then
 
-		: inputFolderNumber:
-		printf "\n"
-	    displayMsg "Enter number to select folder contenning backup file to load"
-	    displayMsg '(between "\e[93m1\e[0m" and "\e[93m'$foldersIndex'\e[0m" or "\e[93mA\e[0m" to abort)\e[93m\n'
-	    echo -n
-		read userinput
-	    displayMsg "\e[0m"
+        : inputFolderNumber:
+        printf "\n"
+        displayMsg "Enter number to select folder contenning backup file to load"
+        displayMsg '(between "\e[93m1\e[0m" and "\e[93m'$foldersIndex'\e[0m" or "\e[93mA\e[0m" to abort)\e[93m\n'
+        echo -n
+        read userinput
+        displayMsg "\e[0m"
 
-		# checks that user want abort
-		if [[ $userinput == "a" || $userinput == "A" ]]; then
-			displayMsg "  \e[93mAbort\e[0m"
-			jumpto "end"
-		fi
+        # checks that user want abort
+        if [[ $userinput == "a" || $userinput == "A" ]]; then
+            displayMsg "  \e[93mAbort\e[0m"
+            jumpto "end"
+        fi
 
-		# checks that the input is within the desired range
-		if [[ $userinput -lt 1 || $userinput -gt $foldersIndex ]]; then
-			clear
-			printf "\n"
-	    	displayMsg "The file number \e[91m$userinput\e[0m is not valide."
+        # checks that the input is within the desired range
+        if [[ $userinput -lt 1 || $userinput -gt $foldersIndex ]]; then
+            clear
+            printf "\n"
+            displayMsg "The file number \e[91m$userinput\e[0m is not valide."
 
-			# jumpto "inputFileNumber"
-			jumpto "listFolderAvailables"
+            # jumpto "inputFileNumber"
+            jumpto "listFolderAvailables"
 
-		else
-		    # insert your grep and ping stuff here
-	        displayMsg " Need to use folder n°\e[92m"$userinput"\e[0m"
-	        foldersIndexToload=$userinput-1
-	        folderToUse=(${foldersList[$foldersIndexToload]})
-			folderToUse=$(basename $folderToUse)
-		fi
-	fi
+        else
+            # insert your grep and ping stuff here
+            displayMsg " Need to use folder n°\e[92m"$userinput"\e[0m"
+            foldersIndexToload=$userinput-1
+            folderToUse=(${foldersList[$foldersIndexToload]})
+            folderToUse=$(basename $folderToUse)
+        fi
+    fi
 fi
 
 # on doit maintenant avoir notre dossier ou trouver les backups
 if [ "$folderToUse" == "" ]; then
     displayMsg "\e[91mUnexpected behaviour\e[0m, abort."
-	jumpto "end"
+    jumpto "end"
 fi
 
 displayMsg " Need to use folder \e[92m"$folderToUse"\e[0m"
@@ -199,8 +177,8 @@ displayMsg " Need to use folder \e[92m"$folderToUse"\e[0m"
 
 if [[ "$listOnly" == true ]] && [ ! -z $backupToLoad ] ; then
     displayMsg "Error while parssing arguments, you must set file to restore \e[92m"OR"\e[0m List availables."
-	displayMsg "  \e[93mAbort\e[0m"
-	jumpto "end"
+    displayMsg "  \e[93mAbort\e[0m"
+    jumpto "end"
 fi
 
 : listFilesAvailables:
@@ -235,8 +213,8 @@ for backup in "${backupsList[@]}"; do
     # la date du fichier extraite de son nom
     # /var/www/backups/cdc7_2021-08-17-08h21.sql
     # =>               cdc7_2021-08-17-08h21.sql
-	# filename=$(rev <<< "$backup" | cut -f1 -d'/' | rev)
-	filename=$(basename $backup)
+    # filename=$(rev <<< "$backup" | cut -f1 -d'/' | rev)
+    filename=$(basename $backup)
 
     if [ "$backupToLoad" != "" ]; then
         # pour le cas où l'on connait le fichier à charger
@@ -251,21 +229,21 @@ for backup in "${backupsList[@]}"; do
         fi
         displayMsg "File : \e[93m$backup\e[0m"
     else
-		if [[ "$listOnly" == true ]]; then
-        	displayMsg "  "$filename
+        if [[ "$listOnly" == true ]]; then
+            displayMsg "  "$filename
         else
-			if [ $backupsCount -eq 1 ] && [ $folderSetByArg == true ]; then
-	        	backupToLoad=$filename
-            	backupFound=true
-        	else
-				if [ $backupsCount -eq 1 ]; then
-        			displayMsg " Backup file available \e[92m"$filename"\e[0m"
-	        		backupToLoad=$filename
-            		backupFound=true
-	        	else
-        			displayMsg "\e[92m "$backupsIndex"\e[0m : "$filename
-        		fi
-        	fi
+            if [ $backupsCount -eq 1 ] && [ $folderSetByArg == true ]; then
+                backupToLoad=$filename
+                backupFound=true
+            else
+                if [ $backupsCount -eq 1 ]; then
+                    displayMsg " Backup file available \e[92m"$filename"\e[0m"
+                    backupToLoad=$filename
+                    backupFound=true
+                else
+                    displayMsg "\e[92m "$backupsIndex"\e[0m : "$filename
+                fi
+            fi
         fi
     fi
 
@@ -273,56 +251,56 @@ done
 
 # on souhaitait que la liste
 if [[ "$listOnly" == true ]]; then
-	jumpto "end"
+    jumpto "end"
 fi
 
 # pour le cas où l'on pensais savoir quel fichier charger, mais qu'il n'a pas été trouvé
 if [ "$backupToLoad" != "" ] && [ $backupFound == false ]; then
     displayMsg "File \e[93m$backupToLoad\e[0m \e[91mNot found\e[0m, abort."
-	jumpto "end"
+    jumpto "end"
 else
-	if [ "$backupToLoad" == "" ]; then
+    if [ "$backupToLoad" == "" ]; then
 
-		: inputFileNumber:
-		printf "\n"
-	    displayMsg "Enter number to select backup file to load"
-	    displayMsg '(between "\e[93m1\e[0m" and "\e[93m'$backupsIndex'\e[0m" or "\e[93mA\e[0m" to abort)\e[93m\n'
-	    echo -n
-		read userinput
-	    displayMsg "\e[0m"
+        : inputFileNumber:
+        printf "\n"
+        displayMsg "Enter number to select backup file to load"
+        displayMsg '(between "\e[93m1\e[0m" and "\e[93m'$backupsIndex'\e[0m" or "\e[93mA\e[0m" to abort)\e[93m\n'
+        echo -n
+        read userinput
+        displayMsg "\e[0m"
 
-		# checks that user want abort
-		if [[ $userinput == "a" || $userinput == "A" ]]; then
-			displayMsg "  \e[93mAbort\e[0m"
-			jumpto "end"
-		fi
+        # checks that user want abort
+        if [[ $userinput == "a" || $userinput == "A" ]]; then
+            displayMsg "  \e[93mAbort\e[0m"
+            jumpto "end"
+        fi
 
-		# checks that the input is within the desired range
-		if [[ $userinput -lt 1 || $userinput -gt $backupsIndex ]]; then
-			clear
+        # checks that the input is within the desired range
+        if [[ $userinput -lt 1 || $userinput -gt $backupsIndex ]]; then
+            clear
 
-			printf "\n"
-			printf "Scriptname : "$SCRIPTNAME"\n"
-			printf "Start      : "$START_DATE" "$START_TIME"\n"
-			printf "\n"
-	    	displayMsg "The file number \e[91m$userinput\e[0m is not valide."
+            printf "\n"
+            printf "Scriptname : "$SCRIPTNAME"\n"
+            printf "Start      : "$START_DATE" "$START_TIME"\n"
+            printf "\n"
+            displayMsg "The file number \e[91m$userinput\e[0m is not valide."
 
-			# jumpto "inputFileNumber"
-			jumpto "listFilesAvailables"
+            # jumpto "inputFileNumber"
+            jumpto "listFilesAvailables"
 
-		else
-		    # insert your grep and ping stuff here
-	        displayMsg " Need to load backup file n°\e[92m"$userinput"\e[0m"
-	        backupsIndexToload=$userinput-1
-	        backupToLoad=(${backupsList[$backupsIndexToload]})
-		fi
-	fi
+        else
+            # insert your grep and ping stuff here
+            displayMsg " Need to load backup file n°\e[92m"$userinput"\e[0m"
+            backupsIndexToload=$userinput-1
+            backupToLoad=(${backupsList[$backupsIndexToload]})
+        fi
+    fi
 fi
 
 # on doit maintenant avoir notre fichier à charger
 if [ "$backupToLoad" == "" ]; then
     displayMsg "\e[91mUnexpected behaviour\e[0m, abort."
-	jumpto "end"
+    jumpto "end"
 fi
 
 filename=$(basename $backupToLoad)
@@ -332,7 +310,7 @@ displayMsg " Backup file to use \e[92m"$filename"\e[0m"
 tail --lines=1 $folderForBackupsSQL/$folderToUse/$filename
 
 if [ "$noInterractive" == true ]; then
-	jumpto "loadDump"
+    jumpto "loadDump"
 fi
 
 printf "\n"
@@ -340,10 +318,10 @@ displayMsg "Can we proceed with this file?"
 
 
 if [ $backupsCount -eq 1 ]; then
-	# pas de selection d'autre fichier possible
-	displayMsg "(\e[93my\e[0m)es or \e[93ma\e[0mbort"
+    # pas de selection d'autre fichier possible
+    displayMsg "(\e[93my\e[0m)es or \e[93ma\e[0mbort"
 else
-	displayMsg "(\e[93my\e[0m)es, \e[93ms\e[0melect another file or \e[93ma\e[0mbort"
+    displayMsg "(\e[93my\e[0m)es, \e[93ms\e[0melect another file or \e[93ma\e[0mbort"
 fi
 echo -n
 read userinput
@@ -351,23 +329,23 @@ displayMsg "\e[0m"
 
 # Check if user want to select another file
 if [[ $userinput == "s" || $userinput == "S" ]]; then
-	if [ $backupsCount -gt 1 ]; then
-		jumpto "listFilesAvailables"
-	fi
+    if [ $backupsCount -gt 1 ]; then
+        jumpto "listFilesAvailables"
+    fi
 else
-	# Check if user want to proceed
-	if [[ -z $userinput || $userinput == "y" || $userinput == "Y" ]]; then
-		jumpto "loadDump"
-	fi
+    # Check if user want to proceed
+    if [[ -z $userinput || $userinput == "y" || $userinput == "Y" ]]; then
+        jumpto "loadDump"
+    fi
 fi
 
 # checks that user want abort
 if [[ $userinput == "a" || $userinput == "A" ]]; then
-	displayMsg "  \e[93mAbort\e[0m"
-	jumpto "end"
+    displayMsg "  \e[93mAbort\e[0m"
+    jumpto "end"
 else
-	displayMsg "Unexpedted choice \e[93mAbort\e[0m"
-	jumpto "end"
+    displayMsg "Unexpedted choice \e[93mAbort\e[0m"
+    jumpto "end"
 fi
 
 : loadDump:
@@ -382,26 +360,8 @@ displayMsg " Start import dump.."
 # Importation du dump SQL
 mysql -h $DB_HOST -u $DB_USER -p$DB_PASS $DB_NAME < $folderForBackupsSQL/$folderToUse/$filename
 
-if [[ "$selfLaunch" == true ]]; then
-	displayMsg "Import file \e[92m$folderToUse\e[0m/\e[92m$filename\e[0m done."
-else
-	benchEnd=$(date +%s)
-	benchDuration=$(( benchEnd - TS_START_DATE ))
-	displayMsg "Import file \e[92m$folderToUse\e[0m/\e[92m$filename\e[0m done ("$(displayTimeFromSec $benchDuration)")."
-fi
-
-: end:
-# #############################################
-# reccap de fin
-END_DATE=$(date +"%d/%m/%Y")
-END_TIME=$(date +"%T")
 benchEnd=$(date +%s)
 benchDuration=$(( benchEnd - TS_START_DATE ))
+displayMsg "Import file \e[92m$folderToUse\e[0m/\e[92m$filename\e[0m done ("$(displayTimeFromSec $benchDuration)")."
 
-
-if [[ "$selfLaunch" == true ]]; then
-	printf "\n"
-	printf "Spend time : "$(displayTimeFromSec $benchDuration)"\n"
-	printf "End        : "$END_DATE" "$END_TIME"\n"
-	printf "\n"
-fi
+: end:
