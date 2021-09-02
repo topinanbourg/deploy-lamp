@@ -26,7 +26,6 @@ declare -a sshKeysToAdd=(
 # BDD cnx (will be overided to set "DB_HOST", ...)
 default_DB_HOST="localhost"
 default_DB_USER=$repoName
-#default_DB_PASS="mBtlIfSwLmYXRw3Z6ZXVRRYSsglWZQEYVDCzvUEcdG"
 default_DB_PASS="unknow"
 default_DB_NAME=$repoName"_db"
 
