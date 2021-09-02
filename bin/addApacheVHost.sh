@@ -10,7 +10,7 @@ fi
 
 default_ServerName=$(cat /etc/hostname)
 default_RepoName="RepoName"
-default_PublicFolder"public"
+default_PublicFolder="public"
 
 if [ -n $repoName ]; then
     default_RepoName=$repoName
@@ -46,7 +46,7 @@ while [ true ]; do
         read userinput
         if [ -n "$userinput" ]; then
             # update value if user input is'nt empty
-            eval "$fieldKey"='$userinput'
+            eval "$fieldname"='$userinput'
         fi
     done
 
