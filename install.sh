@@ -3,8 +3,8 @@
 # exemple de lancement :
 # 
 # sudo su -
-# chmod +x /home/centos/install_cdc7.sh
-# /home/centos/install_cdc7.sh
+# chmod +x /home/debian/install_cdc7.sh
+# /home/debian/install_cdc7.sh
  
 # ############
 # Some const
@@ -13,12 +13,15 @@ source ./const.sh
 # let's go
 
 echo "Copy shell profile options"
-cp /home/centos/.ssh/authorized_keys /root/.ssh
-cp /home/centos/.bash_aliases        /root/
-cp /home/centos/.bashrc              /root/
-cp /home/centos/.profile             /root/
-cp /home/centos/.gitconfig           /root/
-cp -r /home/centos/bin               /root/
+cp /home/debian/.ssh/authorized_keys /root/.ssh
+cp /home/debian/.bash_aliases        /root/
+cp /home/debian/.bashrc              /root/
+cp /home/debian/.profile             /root/
+cp /home/debian/.gitconfig           /root/
+
+cp -r /home/debian/bin               /root/
+cp /home/debian/const.sh             /root/
+cp /home/debian/install.sh           /root/
 
 chown -R root:root /root
 chmod +x /root/bin/*.sh
