@@ -17,6 +17,7 @@ apt install -y nano
 # install apache
 displayMsg "Install \e[92mApache\e[0m"
 apt install -y apache2
+chown -R www-data:www-data /var/www
 
 # install firewall
 displayMsg "Install firewall \e[92mufw\e[0m"
