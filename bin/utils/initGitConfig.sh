@@ -5,10 +5,10 @@
 echo "Copy gitconfig & ssh key for apache's user"
 
 # Copie de la config git pour le user apache
-cp /home/centos/.gitconfig           /usr/share/httpd/
+cp /home/debian/.gitconfig           /var/www/
 # de la clef ssh
-mkdir /usr/share/httpd/.ssh
-cp /root/.ssh/id_rsa /usr/share/httpd/.ssh/
+mkdir /var/www/.ssh
+cp /root/.ssh/id_rsa /var/www/.ssh/
 
-chown -R apache:apache /usr/share/httpd/.ssh
-chown    apache:apache /usr/share/httpd/.gitconfig
+chown -R www-data:www-data /var/www/.ssh
+chown    www-data:www-data /var/www/.gitconfig
