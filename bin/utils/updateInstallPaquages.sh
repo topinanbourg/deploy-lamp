@@ -39,7 +39,7 @@ apt install -y php libapache2-mod-php php-mysql
 
 # install certbot for let's encrypt
 displayMsg "Install \e[92mCertbot\e[0m for let's encript"
-apt install python-certbot-apache
+apt install -y python-certbot-apache
 
 # install de git
 displayMsg "Install \e[92mgit\e[0m"
