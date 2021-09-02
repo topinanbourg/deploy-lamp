@@ -78,3 +78,11 @@ source ./bin/utils/loadBackupSQL.sh
 # sed -i 's/#prestashop/curiositasv7/' /etc/httpd/conf/httpd.conf
 
 
+# copy modified files to repo
+cp /root/.bash_aliases        /var/www/deploy/
+cp /root/.bashrc              /var/www/deploy/
+cp /root/.profile             /var/www/deploy/
+cp /root/.gitconfig           /var/www/deploy/
+cp /root/const.sh             /var/www/deploy/
+cp /root/install.sh           /var/www/deploy/
+cp -r /root/bin               /var/www/deploy/
