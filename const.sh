@@ -16,7 +16,7 @@
 displayWithColor=true
 
 # Hostname to set
-defaultHostName="s3-kalak-xyz"
+defaultHostName="s3.kalak.xyz"
 
 # Git repo name, and subfolder name (to deploy, backups..)
 REPO_NAME=curiositasv7
