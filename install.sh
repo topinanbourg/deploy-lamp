@@ -27,6 +27,9 @@ chown -R root:root /root
 chmod +x /root/bin/*.sh
 chmod +x /root/bin/utils/*.sh
 
+# go to root folder
+cd /root
+
 # load usefull common stuff
 source ./bin/utils/commons.sh
 
