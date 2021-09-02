@@ -197,8 +197,6 @@ do
     esac
 done
 
-displayMsg $(date +"%Y-%m-%d %H:%M:%S")" \e[93mStart\e[0m.."
-
 # Timestamp du départ de lancement de ce script
 TS_START_DATE=$(date +%s)
 
