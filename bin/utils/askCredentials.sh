@@ -28,8 +28,7 @@ while [ true ]; do
 
     echo ""
     echo ""
-    echo "Please fill DB credentials with informations from api"
-    echo "How to use api are describe here: https://docs.ovh.com/fr/public-cloud/applications-preinstallees/#details-de-connexion-a-lapplication"
+    echo "Please fill DB credentials to use"
     echo ""
     displayMsg "Fill new value, or leave \e[92mdefault\e[0m"
     echo ""
