@@ -58,10 +58,6 @@ while [ true ]; do
     echo "Are theses values ok:"
     for field in ${fieldnames[@]}
     do
-        if [ -z "${!field}" ]; then
-            defaultFieldValue="default_$field"
-            eval "$field"='${!defaultFieldValue}'
-        fi
         currentValue=${!field}
         displayMsg "    $field: \e[92m"$currentValue"\e[0m"
     done
