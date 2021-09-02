@@ -3,8 +3,6 @@
 #  * Remise en place d'une sauvegarde SQL,
 #
 
-# is this file self-launched, or included ?
-needHeaders=false
 # load usefull common stuff
 if [ -z ${commonsLoaded+x} ]; then
     source /root/bin/utils/commons.sh
@@ -34,21 +32,14 @@ do
         noInterractive=true
         continue
     fi
-
     if [ $ARGUMENT == "-l" ]; then
         listOnly=true
-        continue
-    fi
-
-    if [[ $ARGUMENT == "nh" || $ARGUMENT == "noHeaders" ]]; then
-        needHeaders=false
         continue
     fi
     if [[ $ARGUMENT == "c" || $ARGUMENT == "color" ]]; then
         displayWithColor=true
         continue
     fi
-
     if echo $ARGUMENT | egrep -iq "*\.(sql)"; then
         backupToLoad=$ARGUMENT
     else
