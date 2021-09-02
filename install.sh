@@ -56,6 +56,7 @@ source ./bin/utils/updateInstallPaquages.sh
 source ./bin/utils/initGitConfig.sh
 
 # git clone repoName
+source ./bin/utils/gitClone.sh
 
 # ask for DB credentials
 source ./bin/utils/askCredentials.sh
@@ -75,6 +76,10 @@ source ./bin/utils/loadBackupSQL.sh
 # # read -p "Press [Enter] when ready..."
 # # nano /etc/ssh/sshd_config
 # sed -i 's/#prestashop/curiositasv7/' /etc/httpd/conf/httpd.conf
+
+# git clone deploy to save modified file
+repoName="deploy"
+source ./bin/utils/gitClone.sh
 
 
 # copy modified files to repo
