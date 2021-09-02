@@ -12,7 +12,7 @@ default_ServerName=$(cat /etc/hostname)
 default_RepoName="RepoName"
 default_PublicFolder"public"
 
-if [ -z ${repoName+x} ]; then
+if [ -n $repoName ]; then
     default_RepoName=$repoName
 fi
 
@@ -38,9 +38,9 @@ while [ true ]; do
             # if var is empty
             defaultFieldValue="default_$fieldKey"
             # set default value
-            eval "$fieldKey"='${!defaultFieldValue}'
+            eval "$fieldname"='${!defaultFieldValue}'
         fi
-        currentValue=${!fieldKey}
+        currentValue=${!fieldname}
         displayMsg " $fieldKey: \e[92m"$currentValue"\e[0m";
         echo -n
         read userinput
