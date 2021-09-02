@@ -1,0 +1,12 @@
+[alias]
+    ci = commit
+    co = checkout
+    st = status
+    br = branch
+
+[user]
+    name = JosNo
+    email = josselin.nauche@gmail.com
+
+[core]
+    editor = nano
