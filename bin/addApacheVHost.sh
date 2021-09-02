@@ -38,15 +38,15 @@ while [ true ]; do
             # if var is empty
             defaultFieldValue="default_$fieldKey"
             # set default value
-            eval "$field"='${!defaultFieldValue}'
+            eval "$fieldKey"='${!defaultFieldValue}'
         fi
-        currentValue=${!field}
-        displayMsg " $field: \e[92m"$currentValue"\e[0m";
+        currentValue=${!fieldKey}
+        displayMsg " $fieldKey: \e[92m"$currentValue"\e[0m";
         echo -n
         read userinput
         if [ -n "$userinput" ]; then
             # update value if user input is'nt empty
-            eval "$field"='$userinput'
+            eval "$fieldKey"='$userinput'
         fi
     done
 
