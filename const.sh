@@ -6,8 +6,8 @@
 # exemple de lancement :
 # 
 # sudo su -
-# chmod +x /home/centos/install.sh
-# /home/centos/install.sh
+# chmod +x /home/debian/install.sh
+# /home/debian/install.sh
  
 # Enable color display
 displayWithColor=true
