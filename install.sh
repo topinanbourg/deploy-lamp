@@ -7,6 +7,10 @@
 # /home/debian/install_cdc7.sh
  
 # ############
+echo ""
+echo "Please review constants before processing"
+read -p "Press [Enter] when ready..."
+nano ./const.sh
 # Some const
 source ./const.sh
 # ############
