@@ -7,6 +7,4 @@ sed -i 's/#PasswordAuthentication yes/PasswordAuthentication no/' /etc/ssh/sshd_
 # Reload ssh deamon
 echo "Reload ssh deamon"
 # for debian:
-#systemctl restart ssh
-# for centos
-service sshd restart
+systemctl restart ssh
