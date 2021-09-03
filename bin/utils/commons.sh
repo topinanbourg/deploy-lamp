@@ -4,6 +4,7 @@
 #    jumpto
 #    basename
 #    displayMsg
+#    trim
 #    displayTimeFromSec
 #    getVerboseLevel & setVerboseLevel
 #    checkVars
@@ -73,6 +74,14 @@ function displayMsg {
         unset IFS
     fi
     echo -e "$message"
+}
+
+# trim
+#    supression des espaces en debut et fin de chaine
+#
+function trim {
+    local message=$@
+    echo $message | xargs
 }
 
 # exemple of use :
