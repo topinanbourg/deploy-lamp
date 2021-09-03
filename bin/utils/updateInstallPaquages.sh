@@ -26,12 +26,11 @@ displayMsg "  Allow \e[92mSSH\e[0m ports 21"
 ufw allow in "SSH"
 displayMsg "  Allow \e[92mWWW Full\e[0m ports 80,443"
 ufw allow in "WWW Full"
+displayMsg "  Enable \e[92mufw\e[0m"
+ufw enable
 
-# install mariaDB
-displayMsg "Install \e[92mMariaDB\e[0m"
-apt install -y mariadb-server
-# secure install
-mysql_secure_installation
+# install fail2ban
+apt install -y fail2ban
 
 # install PHP
 displayMsg "Install \e[92mPHP\e[0m"
