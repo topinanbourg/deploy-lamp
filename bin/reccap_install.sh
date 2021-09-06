@@ -108,17 +108,17 @@ echo ""
 reposList=()
 foldersList=(/var/www/*)
 for folderName in "${foldersList[@]}" ; do
-   	folderPath=$folderName"/.git"
-	if [ -d "$folderPath" ]; then
-  		reposList+=($(basename $folderName))
-	fi
+       folderPath=$folderName"/.git"
+    if [ -d "$folderPath" ]; then
+          reposList+=($(basename $folderName))
+    fi
 done
 
 reposCount=${#reposList[@]}
 if [ $reposCount -gt 0 ]; then
     displayMsg "Repositories fetched (\e[92m"$reposCount"\e[0m)"
-	for folderName in "${reposList[@]}" ; do
-    	displayMsg " \e[92m"$folderName"\e[0m"
+    for folderName in "${reposList[@]}" ; do
+        displayMsg " \e[92m"$folderName"\e[0m"
     done
     echo ""
 fi
@@ -127,23 +127,23 @@ fi
 vhostsList=()
 confsList=(/etc/apache2/sites-available/*.conf)
 for confFile in "${confsList[@]}" ; do
-	shortName=$(basename $confFile)
-	shortName="${shortName%.*}"
-	if [[ $shortName == *"-ssl" ]]; then
-		continue
-	fi
-	if [[ $shortName == "000-default" ]]; then
-  		vhostsList+=($serverName)
-	else
-		vhostsList+=($shortName)
-	fi
+    shortName=$(basename $confFile)
+    shortName="${shortName%.*}"
+    if [[ $shortName == *"-ssl" ]]; then
+        continue
+    fi
+    if [[ $shortName == "000-default" ]]; then
+          vhostsList+=($serverName)
+    else
+        vhostsList+=($shortName)
+    fi
 done
 
 vHostCount=${#vhostsList[@]}
 if [ $vHostCount -gt 0 ]; then
     displayMsg "VirtualHost created (\e[92m"$vHostCount"\e[0m)"
-	for vhostName in "${vhostsList[@]}" ; do
-    	displayMsg " \e[92m"$vhostName"\e[0m"
+    for vhostName in "${vhostsList[@]}" ; do
+        displayMsg " \e[92m"$vhostName"\e[0m"
     done
     echo ""
 fi
