@@ -75,13 +75,22 @@ source ./bin/utils/cpBackupsSQL.sh
 # if "backupSqlReady" load it
 source ./bin/utils/loadBackupSQL.sh
 
-# enable virtual host for this repo
-source ./bin/addApacheVHost.sh
-
-
 # git clone deploy to save modified file
 repoName="deploy"
 source ./bin/utils/gitClone.sh
+
+# create virtual host for deploy
+source ./bin/utils/addApacheDefaultVHost.sh
+
+# enable virtual host for this repo
+source ./bin/addApacheVHost.sh
+
+displayMsg "Install: all \e[92mdone\e[0m."
+echo ""
+echo ""
+echo ""
+echo "# #### #### ####"
+echo ""
 
 # Reccap de l'installation
 source ./bin/reccap_install.sh
