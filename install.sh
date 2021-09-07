@@ -78,15 +78,13 @@ source ./bin/utils/loadBackupSQL.sh
 # enable virtual host for this repo
 source ./bin/addApacheVHost.sh
 
-# # mise en place du repo comme source du DocumentRoot de apache
-# # echo "Change '<Directory "/var/www/prestashop">' to use '/var/www/curiositasv7' path in httpd.conf"
-# # read -p "Press [Enter] when ready..."
-# # nano /etc/ssh/sshd_config
-# sed -i 's/#prestashop/curiositasv7/' /etc/httpd/conf/httpd.conf
 
 # git clone deploy to save modified file
 repoName="deploy"
 source ./bin/utils/gitClone.sh
+
+# Reccap de l'installation
+source ./bin/reccap_install.sh
 
 # copy modified files to repo
 cp /root/.bash_aliases        /var/www/deploy/

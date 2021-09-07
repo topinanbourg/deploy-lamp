@@ -32,6 +32,7 @@ displayMsg "Apache: \e[92m"$apacheVersion"\e[0m"
 mysqlVersion=$(mysql --version)
 # mysql  Ver 15.1 Distrib 10.3.29-MariaDB, for debian-linux-gnu (x86_64) using readline 5.2
 mysqlVersion=$(echo $mysqlVersion | cut -d " " -f5)
+mysqlVersion=$(echo $mysqlVersion | cut -d "," -f1)
 displayMsg "MySQL:  \e[92m"$mysqlVersion"\e[0m"
 
 # #### #### ####
@@ -132,7 +133,7 @@ for confFile in "${confsList[@]}" ; do
     if [[ $shortName == *"-ssl" ]]; then
         continue
     fi
-    if [[ $shortName == "000-default" ]]; then
+    if [[ $shortName == "000-"* ]]; then
           vhostsList+=($serverName)
     else
         vhostsList+=($shortName)
@@ -147,3 +148,44 @@ if [ $vHostCount -gt 0 ]; then
     done
     echo ""
 fi
+
+cat > /var/www/deploy/reccap_install.php<< EOF
+<?php
+return [
+EOF
+echo '  "ServerName" => "'$serverName'",' >> /var/www/deploy/reccap_install.php
+echo '  "os" => "'$osVersion'",' >> /var/www/deploy/reccap_install.php
+
+echo '  "ApacheVersion" => "'$apacheVersion'",' >> /var/www/deploy/reccap_install.php
+echo '  "MySQLVersion" => "'$mysqlVersion'",' >> /var/www/deploy/reccap_install.php
+echo '  "PHPVersion" => "'$phpVersion'",' >> /var/www/deploy/reccap_install.php
+
+echo '  "CertbotVersion" => "'$certbotVersion'",' >> /var/www/deploy/reccap_install.php
+echo '  "UFWVersion" => "'$ufwVersion'",' >> /var/www/deploy/reccap_install.php
+echo '  "Fail2banVersion" => "'$fail2banVersion'",' >> /var/www/deploy/reccap_install.php
+echo '  "CURLVersion" => "'$curlVersion'",' >> /var/www/deploy/reccap_install.php
+
+echo '  "GitVersion" => "'$gitVersion'",' >> /var/www/deploy/reccap_install.php
+echo '  "NodeJSVersion" => "'$nodeVersion'",' >> /var/www/deploy/reccap_install.php
+echo '  "npmVersion" => "'$npmVersion'",' >> /var/www/deploy/reccap_install.php
+echo '  "ComposerVersion" => "'$composerVersion'",' >> /var/www/deploy/reccap_install.php
+
+echo '  "repos" => [' >> /var/www/deploy/reccap_install.php
+if [ $reposCount -gt 0 ]; then
+    for folderName in "${reposList[@]}" ; do
+        echo '    "'$folderName'",' >> /var/www/deploy/reccap_install.php
+    done
+fi
+echo '  ],' >> /var/www/deploy/reccap_install.php
+
+echo '  "vhosts" => [' >> /var/www/deploy/reccap_install.php
+if [ $vHostCount -gt 0 ]; then
+    for vhostName in "${vhostsList[@]}" ; do
+        echo '    "'$vhostName'",' >> /var/www/deploy/reccap_install.php
+    done
+fi
+echo '  ],' >> /var/www/deploy/reccap_install.php
+
+
+
+echo "];" >> /var/www/deploy/reccap_install.php
