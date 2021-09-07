@@ -71,7 +71,5 @@ echo ""
 echo "Operatin system up to date."
 echo ""
 
-git --version
-
 read -p "Press [Enter] when ready..."
 
