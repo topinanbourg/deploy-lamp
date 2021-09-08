@@ -16,7 +16,7 @@ read userinput
 # Check if user want to proceed
 if [[ -z $userinput || $userinput == "y" || $userinput == "Y" ]]; then
     mysql --execute "CREATE DATABASE $DB_NAME;"
-    mysql --execute "GRANT ALL ON "$DB_NAME".* TO '"DB_USER"'@'"$DB_HOST"' IDENTIFIED BY '"$DB_PASS"' WITH GRANT OPTION;"
+    mysql --execute "GRANT ALL ON "$DB_NAME".* TO '"$DB_USER"'@'"$DB_HOST"' IDENTIFIED BY '"$DB_PASS"' WITH GRANT OPTION;"
     mysql --execute "FLUSH PRIVILEGES;"
-    displayMsg "Acces granted to \e[92m"DB_USER"'@'"$DB_HOST"\e[0m for database \e[92m"DB_NAME"\e[0m."
+    displayMsg "Acces granted to \e[92m"$DB_USER"'@'"$DB_HOST"\e[0m for database \e[92m"$DB_NAME"\e[0m."
 fi
