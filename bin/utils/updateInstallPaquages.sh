@@ -38,6 +38,12 @@ apt install -y fail2ban
 displayMsg "Install \e[92mPHP\e[0m"
 apt install -y php libapache2-mod-php php-mysql php-cli php-zip php-curl php-xml
 
+# install APCU for php
+apt install -y php-dev
+pecl channel-update pecl.php.net
+pecl install apcu
+apt install -y php-apcu
+
 # install Composer
 displayMsg "Install \e[92mComposer\e[0m"
 wget -O composer-setup.php https://getcomposer.org/installer
