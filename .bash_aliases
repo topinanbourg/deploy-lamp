@@ -18,9 +18,9 @@ alias ln='ln -i'
 
 # Sécurité ( utiliser www-data pour svn, git, hg et composer)
 alias svn='sudo -u www-data svn'
-#alias git='sudo -u www-data git'
+alias git='sudo -u www-data git'
 alias up='git fetch; git merge'
-alias composer='sudo -u www-data /var/www/composer.phar'
+alias composer='sudo -u www-data composer'
 
 # git en plus court
 alias st='sudo -u www-data git status '
