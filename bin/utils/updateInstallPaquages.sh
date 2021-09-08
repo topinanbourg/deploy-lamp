@@ -36,7 +36,7 @@ apt install -y fail2ban
 
 # install PHP
 displayMsg "Install \e[92mPHP\e[0m"
-apt install -y php libapache2-mod-php php-mysql php-cli php-zip php-curl
+apt install -y php libapache2-mod-php php-mysql php-cli php-zip php-curl php-xml
 
 # install Composer
 displayMsg "Install \e[92mComposer\e[0m"
