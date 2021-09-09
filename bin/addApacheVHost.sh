@@ -71,7 +71,7 @@ while [ true ]; do
         cat > $confFile<< EOF
 <VirtualHost *:80>
     ServerName ${AVH_ServerName}
-    DocumentRoot /var/www/$AVH_RepoName/${AVH_PublicFolder}
+    DocumentRoot /var/www/${AVH_RepoName}/${AVH_PublicFolder}
 
     ErrorLog  "|/usr/bin/cronolog /var/log/apache2/${AVH_ServerName}/%Y/%Y-%m/error.log"
     CustomLog "|/usr/bin/cronolog /var/log/apache2/${AVH_ServerName}/%Y/%Y-%m/access.log" combined
