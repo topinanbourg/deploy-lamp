@@ -16,7 +16,7 @@
     <link rel="icon" href="/img/favicon-16.png" sizes="16x16" type="image/png">
     <link rel="icon" href="/img/favicon.png">
 
-    <title>Hello, world!</title>
+    <title><?= $vars["ServerName"] ?></title>
     
     <style>
       html,
