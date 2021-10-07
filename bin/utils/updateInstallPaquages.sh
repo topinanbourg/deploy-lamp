@@ -44,6 +44,9 @@ pecl channel-update pecl.php.net
 pecl install apcu
 apt install -y php-apcu
 
+# install Imagick for php
+apt install -y php-imagick
+
 # install Composer
 displayMsg "Install \e[92mComposer\e[0m"
 wget -O composer-setup.php https://getcomposer.org/installer
