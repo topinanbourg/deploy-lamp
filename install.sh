@@ -3,8 +3,8 @@
 # exemple de lancement :
 # 
 # sudo su -
-# chmod +x /home/debian/install_cdc7.sh
-# /home/debian/install_cdc7.sh
+# chmod +x /home/debian/install.sh
+# /home/debian/install.sh
  
 # ############
 echo ""
