@@ -56,7 +56,7 @@ rm composer-setup.php
 
 # install certbot for let's encrypt
 displayMsg "Install \e[92mCertbot\e[0m for let's encript"
-apt install -y python-certbot-apache
+apt install -y certbot
 
 # install de git
 displayMsg "Install \e[92mgit\e[0m"
