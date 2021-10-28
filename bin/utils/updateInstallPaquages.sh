@@ -46,6 +46,10 @@ apt install -y php-apcu
 
 # install Imagick for php
 apt install -y php-imagick
+# install MBString
+apt install -y php7.4-mbstring
+# install GD
+apt install -y php-gd
 
 # install Composer
 displayMsg "Install \e[92mComposer\e[0m"
@@ -56,7 +60,7 @@ rm composer-setup.php
 
 # install certbot for let's encrypt
 displayMsg "Install \e[92mCertbot\e[0m for let's encript"
-apt install -y certbot
+apt install -y python3-certbot-apache
 
 # install de git
 displayMsg "Install \e[92mgit\e[0m"
