@@ -1,8 +1,6 @@
-Deploy
-======
+# Deploy
 
-Installation
-------------
+## Installation
 
 Copy files in folder `/home/debian`
 
@@ -14,11 +12,12 @@ Copy files in folder `/home/debian`
 .profile
 const.sh
 install.sh
+upgradePHP8.sh
 ```
+
 .. and the folder `bin`
 
-Run
----
+## Run
 
 ```bash
 $ sudo su -
@@ -29,8 +28,8 @@ $ /home/debian/install.sh
 you will be prompted to change some constant (in `const.sh`) and installation will proceed
 (with few questions to answer during process)
 
-Check
------
+## Check
+
 After installation, you can check installed sofwares with the hostname defined in `const.sh`
 (if DNS is well set)
 
@@ -38,4 +37,15 @@ After installation, you can check installed sofwares with the hostname defined i
 # Hostname to set
 defaultHostName="server.kalak.xyz"
 ```
+
 https://server.kalak.xyz
+
+## Upgrade to php8
+
+to upgrade from php7 to php8
+
+```bash
+$ sudo su -
+$ chmod +x /home/debian/upgradePHP8.sh
+$ /home/debian/upgradePHP8.sh
+```
