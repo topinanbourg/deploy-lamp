@@ -16,7 +16,7 @@
     <link rel="icon" href="/img/favicon-16.png" sizes="16x16" type="image/png">
     <link rel="icon" href="/img/favicon.png">
 
-    <title><?= $vars["ServerName"] ?></title>
+    <title><?= $_SERVER['SERVER_NAME'] ?></title>
     
     <style>
       html,
@@ -40,6 +40,7 @@
           padding: 15px;
           margin: auto;
         }
+
     </style>
   </head>
   <body class="">
@@ -47,8 +48,13 @@
       <div class="text-center">
         <h1 class="h3 mb-3 font-weight-normal">
           <img class="rounded align-self-center" src="/img/favicon-64.png" alt="" width="48" height="48">
-          <?= $vars["ServerName"] ?>
+          <?= $_SERVER['SERVER_NAME'] ?>
         </h1>
+          <?php
+            if ($vars["ServerName"] != $_SERVER['SERVER_NAME']) {
+              echo '<h2 class="h5 mb-3 font-italic font-weight-light">'.$vars["ServerName"].'</h2>';
+            }
+          ?>
       </div>
       <div class="row mb-3">
         <div class="col-sm-auto mb-3">
