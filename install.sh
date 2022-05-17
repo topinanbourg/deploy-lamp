@@ -56,6 +56,9 @@ source ./bin/utils/setHostname.sh
 # update system and install curl/git
 source ./bin/utils/updateInstallPaquages.sh
 
+# install Netstats
+source ./bin/utils/installNetstats.sh
+
 # add config for git and repos
 source ./bin/utils/initGitConfig.sh
 

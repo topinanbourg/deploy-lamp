@@ -15,6 +15,11 @@ displayWithColor=true
 # Hostname to set
 defaultHostName="s3.kalak.xyz"
 
+# NetData tokens
+netdataToken="NetData-account-Token-Here"
+netdataTokenRoomGeneral="room-general-hash-1234-123456789abcdef"
+netdataTokenRoomCustom="room-custom-hash-1234-123456789abcdef"
+
 # Git repo name, and subfolder name (to deploy, backups..)
 repoName="mamouth"
 
