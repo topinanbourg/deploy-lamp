@@ -41,7 +41,7 @@ source ./bin/utils/commons.sh
 echo "Reload current shell's profile"
 source ~/.profile
 
-# Creation & affichage de la clef ssh (à ajouter dans Bitbucket)
+# Creation & affichage de la clef ssh (à ajouter dans Bitbucket/GitHub)
 source ./bin/utils/createSshKey.sh
 
 # ajout des clefs ssh pour se connecter au serveur

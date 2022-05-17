@@ -6,13 +6,13 @@ if [ -z ${commonsLoaded+x} ]; then
 fi
 
 # check required repo name
-checkVars "repoName"
+checkVars "repoName" "codeHosting"
 
 if [ ! -d "/var/www/$repoName" ]; then
 
     displayMsg "Git clone of repo \e[93m$repoName\e[0m.."
 
-    eval "sudo -u www-data git clone git@bitbucket.org:JosNo/"$repoName".git /var/www/"$repoName
+    eval "sudo -u www-data git clone "$codeHosting"/"$repoName".git /var/www/"$repoName
 
     displayMsg "Repository \e[92m$repoName\e[0m cloned."
 else 

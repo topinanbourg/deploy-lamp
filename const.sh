@@ -10,6 +10,11 @@ displayWithColor=true
 # Hostname to set
 defaultHostName="server.kalak.xyz"
 
+# Git code hosting service:username
+# ex : git@bitbucket.org:JosNo
+# ex : git@github.com:topinanbourg
+codeHosting="git@github.com:topinanbourg"
+
 # NetData tokens
 netdataToken="NetData-account-Token-Here"
 netdataTokenRoomGeneral="room-general-hash-1234-123456789abcdef"
