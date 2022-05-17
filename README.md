@@ -1,5 +1,17 @@
 # Deploy
 
+Deploy LAMP server with few configuration (cf `const.sh`)
+
+-   Apache 2.4
+-   MariaDB 10
+-   PHP 7 (upgrade to php8 available)
+
+Deploy a repository:
+
+-   clone a git repository
+-   import SQL backup (after creating DB and user)
+-   add Apache vhost
+
 ## Installation
 
 Copy files in folder `/home/debian`
