@@ -3,17 +3,12 @@
 # 
 # this file contain some const
 # 
-# exemple de lancement :
-# 
-# sudo su -
-# chmod +x /home/debian/install.sh
-# /home/debian/install.sh
  
 # Enable color display
 displayWithColor=true
 
 # Hostname to set
-defaultHostName="s3.kalak.xyz"
+defaultHostName="server.kalak.xyz"
 
 # NetData tokens
 netdataToken="NetData-account-Token-Here"
@@ -21,7 +16,7 @@ netdataTokenRoomGeneral="room-general-hash-1234-123456789abcdef"
 netdataTokenRoomCustom="room-custom-hash-1234-123456789abcdef"
 
 # Git repo name, and subfolder name (to deploy, backups..)
-repoName="mamouth"
+repoName="lama"
 
 # doit on ajouter des clefs ssh
 declare -a sshKeysToAdd=(
