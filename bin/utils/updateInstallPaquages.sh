@@ -53,6 +53,28 @@ apt install -y php-gd
 # install intl
 apt install -y php-intl
 
+# install php fpm
+apt install -y php-fpm
+a2enmod proxy_fcgi setenvif
+a2enconf php7.4-fpm
+a2enmod actions fastcgi alias proxy_fcgi
+
+# ############
+echo ""
+echo "To enable php-fpm, edit /etc/apache2/apache2.conf"
+echo ""
+echo "Search for: <Directory /var/www/>"
+echo "and fix Options like:    Options -Indexes +FollowSymLinks +MultiViews"
+echo ""
+echo "add this after:"
+echo '<FilesMatch \.php$>'
+echo '   SetHandler "proxy:unix:/var/run/php/php7.4-fpm.sock|fcgi://localhost"'
+echo '</FilesMatch>'
+echo ""
+read -p "Press [Enter] when ready..."
+nano /etc/apache2/apache2.conf
+# ############
+
 # install Composer
 displayMsg "Install \e[92mComposer\e[0m"
 wget -O composer-setup.php https://getcomposer.org/installer
