@@ -50,6 +50,8 @@ apt install -y php-imagick
 apt install -y php7.4-mbstring
 # install GD
 apt install -y php-gd
+# install intl
+apt install -y php-intl
 
 # install Composer
 displayMsg "Install \e[92mComposer\e[0m"

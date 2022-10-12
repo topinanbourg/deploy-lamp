@@ -25,6 +25,7 @@ apt install -y php8.1-xml
 apt install -y php8.1-gd
 apt install -y php8.1-imagick
 apt install -y php8.1-mysql
+apt install -y php8.1-intl
 
 # Reccap de l'installation
 source ./bin/reccap_install.sh
